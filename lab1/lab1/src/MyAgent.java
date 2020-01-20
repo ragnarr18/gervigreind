@@ -97,6 +97,7 @@ public class MyAgent implements Agent
                 }
             case "GO HOME":
                 if(x==0 && y==0){
+                    current_state = states[0];
                     return actions[1];
                 }
                 else if(x != 0){
@@ -113,9 +114,13 @@ public class MyAgent implements Agent
                     y++;
                     return actions[4];
                 }
-                else return actions[1];
+                else{
+                    current_state = states[0];
+                    return actions[1];
+                } 
 
         }
+        current_state = states[0];
         return actions[1];
 	}
 }
