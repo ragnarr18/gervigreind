@@ -130,10 +130,33 @@ public class Environment {
 	 * @return the state resulting from doing a in s
 	 */
 	public State getNextState(State s, Action a) {
+		//notad til að breyta state-inu
 		State succState = s.clone();
-		// TODO: fill out this function
+		int stateOrientation = succState.orientation;
+		if (a.equals(Action.TURN_ON)) {
+			succState.turned_on = true;
+		}
+		if (a.equals(Action.TURN_LEFT)) {
+			if (stateOrientation == 0) {
+				succState.orientation = 3;
+			}
+			else {
+				succState.orientation -=1;
+			}
+		
+		if (a.equals(Action.TURN_RIGHT)){
+			if (stateOrientation == 3) {
+				succState.orientation = 0;
+			}
+			else {
+				succState.orientation +=1;
+			}
+		}
 
-		// System.out.println("move: " + a + " -> next state: " + succState);
+		}
+			
+		
+		
 		return succState;
 	}
 
